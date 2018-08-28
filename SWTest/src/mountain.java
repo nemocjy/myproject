@@ -13,39 +13,26 @@ public class mountain {
 	
 	private static void check(int top) {
         
-		int num = 3;
-		boolean isSummit = false; 
-		
-		if(top == 3) {
-			System.out.print("1213121");
-			return;
-		}
-		
-		String result = "";
-		
-		while(true) {
-			result+="1213";
-//			System.out.print("1213");
-			
-			if(isSummit == false) {
-				num++;
-			} else {
-				num--;
-			}
-			
-			if(num == top) {
-				isSummit = true;
-			}
-			if(num <= 3) {
-				result+="121";
-//				System.out.print("121");
-				break;
-			}
-			result+="121"+num;
-//			System.out.print("121"+num);
-		}
-		
-		System.out.print(result);
+		System.out.println(m2(top));
+//		System.out.print(mountain(top-1)+top+mountain(top-1));
 		
     }
+	
+	private static String mountain(int n) {
+		String temp = "1";
+		return mountain(n);
+	}
+	
+	private static String m2(int n) {
+		String temp = "";
+		if(n > 1)
+		{
+			temp = m2(n-1)+n+m2(n-1);
+		}
+		else if(n == 1)
+		{
+			return "1";
+		}
+		return temp;
+	}
 }
