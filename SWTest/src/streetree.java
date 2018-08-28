@@ -38,11 +38,13 @@ public class streetree {
 		
 		for(int i = 1; i < array.length; i++) {
 			lcm = getGcd(lcm, array[i]);
-			System.out.println(lcm);
 		}
 		
-		int result = ((array[array.length-1]-array[0]) / lcm) - array.hashCode();
+		int total = 0;
+		for(int i = 0; i < array.length; i++) {
+			total += array[i]/lcm - 1; 
+		}
 		
-		System.out.print(result);
+		System.out.print(total);
     }
 }
