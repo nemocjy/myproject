@@ -11,7 +11,7 @@ public class str7 {
 		String[] array = new String[A];
 		
 		for(int i = 0; i < array.length; i++) {
-			String str = sc.nextLine();
+			String str = sc.next();
 			array[i] = str;
 		}
 		
@@ -19,15 +19,24 @@ public class str7 {
 	}
 	
 	private static void check(String[] array) {
+			
+		for(int i = 0; i < array.length; i++) {
+			int index = i;
+			for(int j = i; j < array.length; j++) {
+				if(array[index].compareTo(array[j]) > 0) {
+					index = j;
+				}
+			}
+			
+			String temp = array[i];//swap
+			array[i] = array[index];
+			array[index] = temp;
+		}
 		
 		for(int i = 0; i < array.length; i++) {
-			
+			System.out.println(array[i]+" ");
 		}
 		
-		if(str.contains(str2)) {
-			System.out.println("YES");
-		} else {
-			System.out.println("NO");
-		}
+		
     }
 }
