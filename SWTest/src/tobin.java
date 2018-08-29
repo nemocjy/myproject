@@ -16,6 +16,11 @@ public class tobin {
 	
 	private static void check(int[] array, int num2) {
         
+		while(true) {
+			
+			break;
+		}
+		
 		for(int i = 0; i < array.length; i++) {
 			for(int j = 0; j < array.length; j++) {
 				if(array[j] == 0)
