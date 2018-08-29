@@ -9,29 +9,26 @@ public class tobin {
         int A =sc.nextInt();
         int B =sc.nextInt();
 
-        int[][] array = new int[A][A];
+        int[] array = new int[A];
         
         check(array, B);
 	}
 	
-	private static void check(int[][] array, int num2) {
+	private static void check(int[] array, int num2) {
         
 		for(int i = 0; i < array.length; i++) {
-			for(int j = 0; j < array[0].length; j++) {
-				if(array[i][j] == 0)
+			for(int j = 0; j < array.length; j++) {
+				if(array[j] == 0)
 				{
-					array[i][j] = 1;
+					array[j] = 1;
 				}
 				else
 				{
-					array[i][j] = 0;
+					array[j] = 0;
 				}
 				
 				for(int l = 0; l < array.length; l++) {
-					for(int m = 0; m < array.length; m++) {
-						System.out.print(array[l][m]);
-					}
-					System.out.println();
+					System.out.print(array[l]);
 				}
 				System.out.println();
 			}
