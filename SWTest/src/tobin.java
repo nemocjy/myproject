@@ -8,91 +8,31 @@ public class tobin {
 
         int A =sc.nextInt();
         int B =sc.nextInt();
-
-        int[] array = new int[A];
         
-        check(array, B);
+        int[] array = new int[100];
+
+        check(0, 0, A, B, array);
 	}
 	
-	private static void check(int[] array, int num2) {
-        
-		while(true) {
-			
-			break;
-		}
-		
-		for(int i = 0; i < array.length; i++) {
-			for(int j = 0; j < array.length; j++) {
-				if(array[j] == 0)
-				{
-					array[j] = 1;
-				}
-				else
-				{
-					array[j] = 0;
-				}
-				
-				for(int l = 0; l < array.length; l++) {
-					System.out.print(array[l]);
+	private static void check(int num1, int num2, int n, int k, int[] array) {
+		if(num1 >= n) {
+			if(num2 == k) {
+				for(int i = 0; i < n; i++) {
+					System.out.print(array[i]);
 				}
 				System.out.println();
 			}
-			
-			
-			System.out.println();
-			
-//			int count = 0;
-//			for(int k = 0; k < array.length; k++) {
-//				if(array[k] == 1) count++;
-//			}
-			
-//			if(count == num2)
-//			{
-//				for(int l = 0; l < array.length; l++) {
-//					System.out.print(array[l]);
-//				}
-//				System.out.println();
-//			}
+			return;
 		}
 		
-		
-		
-//		System.out.println(m2(top));
-//		System.out.print(mountain(top-1)+top+mountain(top-1));
-		
-    }
-	
-	private static void bin(int num) {
-
-		
-		int[] array = new int[20];
-		
-		int i = 0;
-		while(num != 1) {
-			array[i] = num % 2;
-			num = num / 2;
-			i++;
+		if(num2 < k) {
+			array[num1] = 1;
+			check(num1+1, num2+1, n, k, array);
 		}
 		
-		array[i] = 1;
+		array[num1] = 0;
+		check(num1+1, num2, n, k, array);
 		
-		for(int j = i; j >=0; j--) {
-			System.out.print(array[j]);
-		}
-		
-    
 	}
 	
-	private static String m2(int n) {
-		String temp = "";
-		if(n > 1)
-		{
-			temp = m2(n-1)+n+m2(n-1);
-		}
-		else if(n == 1)
-		{
-			return "1";
-		}
-		return temp;
-	}
 }
