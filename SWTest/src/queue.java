@@ -9,11 +9,11 @@ public class queue {
 		int A = sc.nextInt();
 		
         int[] array = new int[A]; 
-        A--;
+//        A--;
         int B = sc.nextInt();
         
         int front = -1;
-        int rear = -1;
+        int rear = 0;
         for(int i = 0; i < B; i++) {
         	int op = sc.nextInt();
         	switch(op)
@@ -21,8 +21,8 @@ public class queue {
         	case 1:
         		if(rear < A)
         		{
-        			rear++;
         			array[rear] = sc.nextInt();
+        			rear++;
         		}
         		else
         		{
@@ -31,7 +31,7 @@ public class queue {
         		}
         		break;
         	case 2:
-        		if(front < 0)
+        		if(front+1 == rear)
         		{
         			System.out.println("Underflow");
         		}
@@ -43,10 +43,11 @@ public class queue {
         		}
         		break;
         	case 3:
-        		if(front != rear)
+        		if(front+1 < rear)
         		{
-        			System.out.println(array[front]);
-        			front++;
+//        			front++;
+        			System.out.println(array[front+1]);
+//        			front++;
         		}
         		else
         		{
