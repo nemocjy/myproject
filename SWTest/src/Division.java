@@ -8,32 +8,70 @@ public class Division {
 
         int A =sc.nextInt();
 
-        check(A-1, A-1, A);
+        int[] array = new int[100];
+        
+        check(0, A, A, array);
         	
 	}
 	
-	private static void check(int num1, int num2, int total) {
+	private static void check(int idx, int num2, int total, int[] array) {
 //        System.out.println(num1-num2+"+"+num2);
-		if(num1+num2 == total)
-		{
-			System.out.print(num2);
-			if(num2 == 1)//출력 마지막 자리가 1이면 전체 숫자 변경
-			{
-				check(num1-1, num1-1, total);
-			}
-			else
-			{
-				check(num2)
-			}
-		}
-		else if(num1+num2 > total)
-		{
-			check(num1, num2-1, total);
-		}
-//		else if(num1 == 1)
-//		{
-//			check(num1+num2, num2-1, total);
+//		System.out.println(idx);
+//		for(int i=0;i<array.length;i++) {
+//			System.out.print(array[i]+" ");
 //		}
+//		System.out.println();
+		int sum = 0;
+		for(int i = 0; i < array.length; i++) {
+			if(array[i] == 0) break; 
+			sum += array[i];
+		}
+		
+		if(sum == total) {
+			int lIdx = 0;
+			 for(int i = 0; i < array.length; i++) {
+				 System.out.print(array[i]);
+				 if(array[i+1] == 0) {
+					 lIdx = i;
+					 System.out.println();
+					 break;
+				 }
+				 else
+				 {
+					 System.out.print("+");
+				 }
+			 }
+			 
+			 if(array[lIdx] > 1)
+			 {
+				 array[lIdx] = array[lIdx]-1;
+				 check(lIdx+1, total, total, array);
+			 }
+			 else if(array[0] > 0)
+			 {
+				 array[0] = array[0]-1;
+				 check(1, total-1, total, array);
+			 }
+			 
+//			 array[lIdx] = num2-1;
+//			 check(lIdx+1, num2-1, total, array);
+			 
+			 return;
+		}
+		else if(sum > total)
+		{
+			array[idx-1] = num2-1;
+			check(idx-1, num2-1, total, array);
+			return;
+		}
+		
+//		if(num2 > 1)
+//		{	
+			array[idx] = num2-1;
+			check(idx+1, num2-1, total, array);
+//		}
+		
+//		check(num1-1, total-num1, total, array);
     }
 	
 	private static void bin(int num) {
