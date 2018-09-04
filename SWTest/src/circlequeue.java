@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class queue {
+public class circlequeue {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -12,17 +12,18 @@ public class queue {
 //        A--;
         int B = sc.nextInt();
         
-        int front = -1;
+        int front = 0;
         int rear = 0;
         for(int i = 0; i < B; i++) {
         	int op = sc.nextInt();
         	switch(op)
         	{
         	case 1:
-        		if(rear < A)
+        		if((rear+1) % array.length != front)
         		{
+        			rear = (rear+1) % array.length;
         			array[rear] = sc.nextInt();
-        			rear++;
+//        			rear++;
         		}
         		else
         		{
@@ -31,22 +32,23 @@ public class queue {
         		}
         		break;
         	case 2:
-        		if(front+1 == rear)
+        		if(front == rear)
         		{
         			System.out.println("Underflow");
         		}
         		else
         		{
 //        			System.out.println(array[index]);
-        			front++;
+        			front = (front+1) % array.length;
+//        			front++;
 //        			index--;
         		}
         		break;
         	case 3:
-        		if(front+1 < rear)
+        		if(front != rear)
         		{
 //        			front++;
-        			System.out.println(array[front+1]);
+        			System.out.println(array[(front+1) % array.length]);
 //        			front++;
         		}
         		else

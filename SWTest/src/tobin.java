@@ -9,7 +9,7 @@ public class tobin {
         int A =sc.nextInt();
         int B =sc.nextInt();
         
-        int[] array = new int[100];
+        int[] array = new int[A];
 
         check(0, 0, A, B, array);
 	}
