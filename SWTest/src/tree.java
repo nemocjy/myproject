@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Division {
+public class tree {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -14,6 +14,68 @@ public class Division {
         	
 	}
 	
+	public class Node {
+	    private char data;
+	    private Node left;
+	    private Node right;
+	  
+	    public Node(char data) {
+	        this.setData(data);
+	    }
+	  
+	    public void setData(char data) {
+	        this.data = data;
+	    }
+	  
+	    public char getData() {
+	        return data;
+	    }
+	  
+	    public void setLeft(Node left) {
+	        this.left = left;
+	    }
+	  
+	    public Node getLeft() {
+	        return left;
+	    }
+	  
+	    public void setRight(Node right) {
+	        this.right = right;
+	    }
+	  
+	    public Node getRight() {
+	        return right;
+	    }
+	}
+	
+	public static void printPreorderTree(Node node) {
+		if(node == null) return;
+		
+		System.out.print(node.getData());
+		
+		printPreorderTree(node.getLeft());
+		
+		printPreorderTree(node.getRight());
+	}
+	
+	public static void printInorderTree(Node node) {
+		printInorderTree(node.getLeft());
+		
+		System.out.print(node.getData());
+		
+		printInorderTree(node.getRight());
+	}
+	
+	public static void printPostorderTree(Node node) {
+		printPostorderTree(node.getLeft());
+		
+		printPostorderTree(node.getRight());
+		
+		System.out.print(node.getData());
+		
+		
+	}
+
 	private static void check(int idx, int num2, int total, int[] array) {
 //        System.out.println(num1-num2+"+"+num2);
 //		System.out.println(idx);
