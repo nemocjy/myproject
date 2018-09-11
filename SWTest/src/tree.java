@@ -2,32 +2,93 @@ import java.util.Scanner;
 
 public class tree {
 
+	public static Node root;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
 
         int A =sc.nextInt();
 
-        int[] array = new int[100];
+//        int[] array = new int[A];
         
-        check(0, A, A, array);
+        String[] array = new String[A];
+        String[][] array2 = new String[A][2];
+        
+        for(int i = 0; i < A; i++) {
+        	array[i] = sc.next();
+        	for(int j = 0; j < 2; j++) {
+        		array2[i][j] = sc.next();
+//        		addTree(sc.next());
+        	}
+        }
+        printPreorderTree(array, array2);
+//        printPreorderTree(root);
+//        check(0, A, A, array);
         	
 	}
 	
-	public class Node {
-	    private char data;
+	public static void printPreorderTree(String[] array, String[][] array2) {
+		System.out.print(array[0]);
+		for(int i = 1; i < array.length; i++) {
+			
+//			System.out.print(array[i]);
+			
+			
+			for(int j = 0; j < array2.length; j++) {
+				for(int k = 0; k < array2[0].length; k++) {
+//					if(array[i].equals(array2[j][k])) {
+						
+						System.out.print(array2[j][k]);
+//					}
+				}
+//					if(!".".equals(array2[j][k]))
+//					System.out.print(array2[j][k]);
+//				}
+			}
+		}
+	}
+	
+	public static void addTree(String data) {
+		if(root == null) {
+			Node node = new Node();
+			node.setData(data);
+			root = node;
+		} else {
+			addTree(root, data);
+		}
+	}
+	
+	public static void addTree(Node root, String data) {
+		if(root.getLeft() == null) {
+			Node node = new Node();
+			node.setData(data);
+			root.setLeft(node);
+		} else {
+			Node node = new Node();
+			node.setData(data);
+			root.setRight(node);
+//			addTree(root.getLeft(), data);
+		}
+	}
+	
+	public static class Node {
+	    private String data;
 	    private Node left;
 	    private Node right;
 	  
-	    public Node(char data) {
+	    public Node(String data) {
 	        this.setData(data);
 	    }
 	  
-	    public void setData(char data) {
+	    public Node() {
+			// TODO Auto-generated constructor stub
+		}
+
+		public void setData(String data) {
 	        this.data = data;
 	    }
 	  
-	    public char getData() {
+	    public String getData() {
 	        return data;
 	    }
 	  
@@ -76,99 +137,4 @@ public class tree {
 		
 	}
 
-	private static void check(int idx, int num2, int total, int[] array) {
-//        System.out.println(num1-num2+"+"+num2);
-//		System.out.println(idx);
-//		for(int i=0;i<array.length;i++) {
-//			System.out.print(array[i]+" ");
-//		}
-//		System.out.println();
-		
-		int sum = 0;
-		for(int i = 0; i < array.length; i++) {
-			if(array[i] == 0) break; 
-			sum += array[i];
-		}
-		
-		if(sum == total) {
-			int lIdx = 0;
-			 for(int i = 0; i < array.length; i++) {
-				 System.out.print(array[i]);
-				 if(array[i+1] == 0) {
-					 lIdx = i;
-					 System.out.println();
-					 break;
-				 }
-				 else
-				 {
-					 System.out.print("+");
-				 }
-			 }
-			 
-			 if(array[lIdx] > 1)
-			 {
-				 array[lIdx] = array[lIdx]-1;
-				 check(lIdx+1, total, total, array);
-			 }
-			 else if(array[0] > 0)
-			 {
-				 array[0] = array[0]-1;
-				 check(1, total-1, total, array);
-			 }
-			 
-//			 array[lIdx] = num2-1;
-//			 check(lIdx+1, num2-1, total, array);
-			 
-//			 return;
-		}
-		else if(sum > total)
-		{
-			array[idx-1] = num2-1;
-			check(idx-1, num2-1, total, array);
-//			return;
-		}
-		
-//		if(num2 > 1)
-		else
-		{	
-			array[idx] = num2-1;
-			check(idx+1, num2-1, total, array);
-		}
-		
-//		check(num1-1, total-num1, total, array);
-    }
-	
-	private static void bin(int num) {
-
-		
-		int[] array = new int[20];
-		
-		int i = 0;
-		while(num != 1) {
-			array[i] = num % 2;
-			num = num / 2;
-			i++;
-		}
-		
-		array[i] = 1;
-		
-		for(int j = i; j >=0; j--) {
-			System.out.print(array[j]);
-		}
-		
-    
-	}
-	
-	private static String m2(int n) {
-		String temp = "";
-		if(n > 1)
-		{
-			temp = m2(n-1)+n+m2(n-1);
-		}
-		else if(n == 1)
-		{
-			return "1";
-		}
-		return temp;
-	}
 }
