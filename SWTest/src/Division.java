@@ -10,9 +10,15 @@ public class Division {
 
         int[] array = new int[100];
         
+        array[0] = A-1;
+        
         check(0, A, array);
+        
+        System.out.print(count);
         	
 	}
+	
+	static int count = 0;
 	
 	private static void check(int idx, int total, int[]array) {
 		int sum = 0;
@@ -35,6 +41,8 @@ public class Division {
 					System.out.print("+");
 				}
 			}
+			
+			count++;
 
 			if(array[lIdx] > 1)
 			{
@@ -42,22 +50,21 @@ public class Division {
 				array[lIdx+1] = total;
 				check(lIdx+1, total, array);
 			}
-			else if(array[0] > 0)
+			else if(array[0] > 1)
 			{
 				array[0] = array[0]-1;
-				check(1, total, array);
+				check(0, total, array);
 			}
 
 
 		} else if(sum > total) {
-			array[idx-1] = array[idx-1]-1;
-			check(idx-1, total, array);
+			array[idx] = array[idx]-1;
+			check(idx, total, array);
 //			return;
+		} else {
+			array[idx+1] = array[idx];
+			check(idx+1, total, array);
 		}
-		
-		array[idx] = array[idx-1]-1;
-		check(idx+1, total, array);
-		
 		
 	}
 	
