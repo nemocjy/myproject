@@ -8,133 +8,107 @@ public class tree {
 		Scanner sc = new Scanner(System.in);
 
         int A =sc.nextInt();
-
-//        int[] array = new int[A];
-        
-        String[] array = new String[A];
-        String[][] array2 = new String[A][2];
-        
+        Tree tree = new Tree();
+        String a, b, c;
         for(int i = 0; i < A; i++) {
-        	array[i] = sc.next();
-        	for(int j = 0; j < 2; j++) {
-        		array2[i][j] = sc.next();
-//        		addTree(sc.next());
-        	}
+        	a = sc.next();
+        	b = sc.next();
+        	c = sc.next();
+
+        	tree.addTree(a, b, c);
         }
-        printPreorderTree(array, array2);
+        
+        tree.printPreorderTree(tree.root);
+        System.out.println();
+        tree.printInorderTree(tree.root);
+        System.out.println();
+        tree.printPostorderTree(tree.root);
 //        printPreorderTree(root);
 //        check(0, A, A, array);
         	
 	}
 	
-	public static void printPreorderTree(String[] array, String[][] array2) {
-		System.out.print(array[0]);
-		for(int i = 1; i < array.length; i++) {
-			
-//			System.out.print(array[i]);
-			
-			
-			for(int j = 0; j < array2.length; j++) {
-				for(int k = 0; k < array2[0].length; k++) {
-//					if(array[i].equals(array2[j][k])) {
-						
-						System.out.print(array2[j][k]);
-//					}
-				}
-//					if(!".".equals(array2[j][k]))
-//					System.out.print(array2[j][k]);
-//				}
-			}
-		}
-	}
-	
-	public static void addTree(String data) {
-		if(root == null) {
-			Node node = new Node();
-			node.setData(data);
-			root = node;
-		} else {
-			addTree(root, data);
-		}
-	}
-	
-	public static void addTree(Node root, String data) {
-		if(root.getLeft() == null) {
-			Node node = new Node();
-			node.setData(data);
-			root.setLeft(node);
-		} else {
-			Node node = new Node();
-			node.setData(data);
-			root.setRight(node);
-//			addTree(root.getLeft(), data);
-		}
-	}
-	
 	public static class Node {
-	    private String data;
-	    private Node left;
-	    private Node right;
-	  
-	    public Node(String data) {
-	        this.setData(data);
-	    }
-	  
-	    public Node() {
+		private String data;
+		private Node left;
+		private Node right;
+
+		public Node(String data) {
+			this.setData(data);
+		}
+
+		public Node() {
 			// TODO Auto-generated constructor stub
 		}
 
 		public void setData(String data) {
-	        this.data = data;
-	    }
-	  
-	    public String getData() {
-	        return data;
-	    }
-	  
-	    public void setLeft(Node left) {
-	        this.left = left;
-	    }
-	  
-	    public Node getLeft() {
-	        return left;
-	    }
-	  
-	    public void setRight(Node right) {
-	        this.right = right;
-	    }
-	  
-	    public Node getRight() {
-	        return right;
-	    }
+			this.data = data;
+		}
+
+		public String getData() {
+			return data;
+		}
+
+		public void setLeft(Node left) {
+			this.left = left;
+		}
+
+		public Node getLeft() {
+			return left;
+		}
+
+		public void setRight(Node right) {
+			this.right = right;
+		}
+
+		public Node getRight() {
+			return right;
+		}
 	}
 	
-	public static void printPreorderTree(Node node) {
-		if(node == null) return;
-		
-		System.out.print(node.getData());
-		
-		printPreorderTree(node.getLeft());
-		
-		printPreorderTree(node.getRight());
-	}
-	
-	public static void printInorderTree(Node node) {
-		printInorderTree(node.getLeft());
-		
-		System.out.print(node.getData());
-		
-		printInorderTree(node.getRight());
-	}
-	
-	public static void printPostorderTree(Node node) {
-		printPostorderTree(node.getLeft());
-		
-		printPostorderTree(node.getRight());
-		
-		System.out.print(node.getData());
-		
-		
+	static class Tree {
+		static Node root;
+
+		public static void search(Node root, String data, String leftData, String rightData) {
+			if(root == null) { 
+				return;
+			} else if(root.data.equals(data)) {
+				if(!leftData.equals(".")) root.left = new Node(leftData);
+				if(!rightData.equals(".")) root.right = new Node(rightData);
+			} else {
+				search(root.left, data, leftData, rightData);
+				search(root.right, data, leftData, rightData);
+			}
+		}
+
+		public static void addTree(String data, String leftData, String rightData) {
+			if(root == null) {
+				if(!data.equals(".")) root = new Node(data);
+				if(!leftData.equals(".")) root.left = new Node(leftData);
+				if(!rightData.equals(".")) root.right = new Node(rightData);
+			} else {
+				search(root, data, leftData, rightData);
+			}
+		}
+
+		public static void printPreorderTree(Node node) {
+			System.out.print(node.data);
+			if(node.left != null) printPreorderTree(node.left);
+			if(node.right != null) printPreorderTree(node.right);
+		}
+
+		public static void printInorderTree(Node node) {
+			if(node.left != null) printInorderTree(node.left);
+			System.out.print(node.data);
+			if(node.right != null) printInorderTree(node.right);
+		}
+
+		public static void printPostorderTree(Node node) {
+			if(node.left != null) printPostorderTree(node.left);
+			if(node.right != null) printPostorderTree(node.right);
+			System.out.print(node.data);
+
+		}
 	}
 
 }
