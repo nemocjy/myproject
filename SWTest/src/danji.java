@@ -8,7 +8,9 @@ public class danji {
 
         int A =sc.nextInt();
 
-        int[] array = new int[100];
+        int[][] array = new int[A][A];
+        
+        
         
         array[0] = A-1;
         
