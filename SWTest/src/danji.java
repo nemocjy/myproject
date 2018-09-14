@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Division {
+public class danji {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
