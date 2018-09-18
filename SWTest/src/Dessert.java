@@ -13,7 +13,6 @@ public class Dessert {
         
         check(1);
         
-        System.out.println();
         System.out.print(count);
         	
 	}
@@ -41,64 +40,105 @@ public class Dessert {
 		if(num == end)
 		{
 			
-
 			int total = 1;
-			int sum = 0;
+//			int sum = 0;
 			for(int i = 2; i <= end; i++)
 			{
 				String op = array[i-2];
 				switch(op) {
 				case "+":
-					if(sum != 0) {
-						total += sum + i;
-						sum = 0; 
+					if(i - 1 <= array.length - 1) {
+						String op2 = array[i-1];
+						if(".".equals(op2)) {
+							String temp = String.valueOf(i);
+							temp += String.valueOf(i+1);
+							int sum = Integer.parseInt(temp);
+							total += sum;
+							i++;
+						}
+						else
+						{
+							total += i;
+						}
 					}
 					else
 					{
 						total += i;
 					}
+//					if(sum != 0) {
+//						total += sum + i;
+//						sum = 0; 
+//					}
+//					else
+//					{
+//						total += i;
+//					}
 					break;
 				case "-":
-					if(sum != 0) {
-						total += sum - i;
-						sum = 0; 
-					}
-					else
-					{					
-						total -= i; 
-					}
-					break;
-				case ".":
-					if(sum != 0) {
-						String temp = String.valueOf(sum);
-						temp += String.valueOf(i);
-						sum = Integer.parseInt(temp);
+					if(i - 1 <= array.length - 1) {
+						String op2 = array[i-1];
+						if(".".equals(op2)) {
+							String temp = String.valueOf(i);
+							temp += String.valueOf(i+1);
+							int sum = Integer.parseInt(temp);
+							total -= sum;
+							i++;
+						}
+						else
+						{
+							total -= i;
+						}
 					}
 					else
 					{
-						String temp = String.valueOf(i-1);
-						temp += String.valueOf(i);
-						sum = Integer.parseInt(temp);
+						total -= i;
 					}
+//					if(sum != 0) {
+//						total += sum - i;
+//						sum = 0; 
+//					}
+//					else
+//					{					
+//						total -= i; 
+//					}
+					break;
+				case ".":
+//					if(sum != 0) {
+//						String temp = String.valueOf(sum);
+//						temp += String.valueOf(i);
+//						sum = Integer.parseInt(temp);
+//					}
+//					else
+//					{
+//						String temp = String.valueOf(i-1);
+//						temp += String.valueOf(i);
+//						sum = Integer.parseInt(temp);
+//						if(i == end)
+//						{
+//							
+//						}
+//					}
 					break;
 				}
 			}
 			if(total == 0)
 			{
-//				for(int i = 1; i <= end; i++) {
-//					System.out.print(i+" ");
-//					System.out.print(array[i-1]+" ");
-//				}
+				for(int i = 1; i <= end; i++) {
+					System.out.print(i+" ");
+					if(i != end)
+					System.out.print(array[i-1]+" ");
+				}
 				count++;
+				System.out.println();
 			}
-			for(int i = 1; i <= end-1; i++)
-			{
-				System.out.print(i+" ");
-				System.out.print(array[i-1]+" ");
-			}
-			System.out.print(end+" = "+total);
-			
-			System.out.println();
+//			for(int i = 1; i <= end-1; i++)
+//			{
+//				System.out.print(i+" ");
+//				System.out.print(array[i-1]+" ");
+//			}
+//			System.out.print(end+" = "+total);
+//			
+//			System.out.println();
 			
 //			check(num-1);
 		}
