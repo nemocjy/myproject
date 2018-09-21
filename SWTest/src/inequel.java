@@ -38,8 +38,6 @@ public class inequel {
 //			
 //		}
 		
-		
-		
 		if(num < end) {
 			String op = array[num];
 			switch(op) {
