@@ -34,7 +34,6 @@ public class Dessert {
 			{
 				break;
 			}
-			
 		}
 		if(isFinish == end-1) return;
 		if(num == end)
@@ -213,55 +212,55 @@ public class Dessert {
 //		}
 //	}
 	
-	private static void check(int idx, int total, int[]array) {
-		int sum = 0;
-		for(int i = 0; i < array.length; i++) {
-			if(array[i] == 0) break; 
-			sum += array[i];
-		}
-		
-		if(sum == total) {
-			int lIdx = 0;
-			for(int i = 0; i < array.length; i++) {
-				System.out.print(array[i]);
-				if(array[i+1] == 0) {
-					lIdx = i;
-					System.out.println();
-					break;
-				}
-				else
-				{
-					System.out.print("+");
-				}
-			}
-			
-			count++;
-
-			if(array[lIdx] > 1)
-			{
-				array[lIdx] = array[lIdx]-1;
-				array[lIdx+1] = total;
-				check(lIdx+1, total, array);
-			}
-			else if(array[0] > 1)
-			{
-				array[0] = array[0]-1;
-				check(0, total, array);
-			}
-
-
-		} else if(sum > total) {
-			array[idx] = array[idx]-1;
-			check(idx, total, array);
-//			return;
-		} else {
-			
-			
-			array[idx+1] = array[idx];
-			check(idx+1, total, array);
-		}
-		
-	}
+//	private static void check(int idx, int total, int[]array) {
+//		int sum = 0;
+//		for(int i = 0; i < array.length; i++) {
+//			if(array[i] == 0) break; 
+//			sum += array[i];
+//		}
+//		
+//		if(sum == total) {
+//			int lIdx = 0;
+//			for(int i = 0; i < array.length; i++) {
+//				System.out.print(array[i]);
+//				if(array[i+1] == 0) {
+//					lIdx = i;
+//					System.out.println();
+//					break;
+//				}
+//				else
+//				{
+//					System.out.print("+");
+//				}
+//			}
+//			
+//			count++;
+//
+//			if(array[lIdx] > 1)
+//			{
+//				array[lIdx] = array[lIdx]-1;
+//				array[lIdx+1] = total;
+//				check(lIdx+1, total, array);
+//			}
+//			else if(array[0] > 1)
+//			{
+//				array[0] = array[0]-1;
+//				check(0, total, array);
+//			}
+//
+//
+//		} else if(sum > total) {
+//			array[idx] = array[idx]-1;
+//			check(idx, total, array);
+////			return;
+//		} else {
+//			
+//			
+//			array[idx+1] = array[idx];
+//			check(idx+1, total, array);
+//		}
+//		
+//	}
 	
 	
 //	private static void check(int idx, int num2, int total, int[] array) {
