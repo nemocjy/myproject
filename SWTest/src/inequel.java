@@ -10,12 +10,21 @@ public class inequel {
         
         end = A+1;
         array = new String[A];
-        array2 = new int[A+1];
+        array2 = new int[2][A+1];
         for(int i = 0; i < array.length; i++)
         {
         	array[i] = sc.next();
         }
-        check(0);
+        
+        int[] array3 = new int[A+1];
+        for(int i = 0; i < array3.length; i++)
+        {
+        	array2[0][i] = -1;
+        	array2[1][i] = -1;
+        	array3[i] = -1;
+        }
+        
+        check(array3, 0);
         
 //        System.out.print(count);
         	
@@ -23,52 +32,64 @@ public class inequel {
 	static int end = 0;
 	static int count = 0;
 	static String[] array;
-	static int[] array2;
+	static int[][] array2;
 	
-	private static void check(int num)
+	private static void check(int[] array3, int total)
 	{
 		
-		if(num == end) {
-			for(int i = 0; i < array2.length; i++) {
-				System.out.print(array2[i]);
+		if(total == end)
+		{
+			String cur = "";
+			String min = "";
+			String max = "";
+			if(array2[0][0] != -1)
+			{
+				for(int i = 0; i < total; i++)
+				{
+					array2[0][i] = array3[i];
+					array2[1][i] = array3[i];
+				}
 			}
-			System.out.println();
+			else
+			{
+				for(int i = 0; i < total; i++)
+				{
+					cur += String.valueOf(array3[i]);
+					min += String.valueOf(array2[0][i]);
+					max += String.valueOf(array2[1][i]);
+				}
+				
+				if(Integer.parseInt(cur) < Integer.parseInt(min))
+				{
+					for(int i = 0; i < total; i++)
+					{
+						array2[0][i] = array3[i];
+					}
+				}
+				else if(Integer.parseInt(cur) > Integer.parseInt(max))
+				{
+					for(int i = 0; i < total; i++)
+					{
+						array2[1][i] = array3[i];
+					}
+				}
+			}
 		}
-//		for(int i = 0; i < array.length; i++) {
+		else
+		{
+			
+		}
+		
+//		for(int i = 0; i < 10; i++) {
 //			
+////			check(array3);
+//			for(int j = 0; j < array3.length; j++) {
+//				if(array3[j] == -1) {
+//					array3[j] = i;
+//				}
+//			}
 //		}
 		
-		if(num < end) {
-			String op = array[num];
-			switch(op) {
-			case "<":
-				if(array2[num] < array2[num+1]) {
-					array[num] = array[num]+1;
-					check(num+1);
-				}
-				else
-				{
-					return;
-				}
-				break;
-			case ">":
-				if(array2[num] > array2[num+1]) {
-					array[num] = array[num]+1;
-					check(num+1);
-				}
-				else
-				{
-					return;
-				}
-				break;
-			}
-			
-//			array[num] = array[num]+1;
-//			check(num+1);
-		}
-		
-		array2[num] = 0;
-		check(num+1);
 	}
 	
 	
