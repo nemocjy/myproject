@@ -26,6 +26,17 @@ public class inequel {
         
         check(array3, 0);
         
+        for(int i = 0; i < array2[1].length; i++)
+        {
+        	System.out.print(array2[1][i]);
+        }
+        
+        System.out.println();
+        
+        for(int i = 0; i < array2[0].length; i++)
+        {
+        	System.out.print(array2[0][i]);
+        }
 //        System.out.print(count);
         	
 	}
@@ -42,7 +53,53 @@ public class inequel {
 			String cur = "";
 			String min = "";
 			String max = "";
-			if(array2[0][0] != -1)
+			
+			int[] check = new int[10];
+			
+	        for(int i = 0; i < check.length; i++)
+	        {
+	        	check[i] = -1;
+	        }
+	        
+			for(int i = 0; i < array3.length; i++)
+			{
+				for(int j = 0; j < 10; j++)
+				{
+					
+					if(array3[i] == j)
+					{
+						if(check[j] != -1)
+						{
+							return;
+						}
+						else
+						{
+							check[j] = j;
+						}
+					}
+				}
+			}
+			
+			for(int i = 0; i < array.length; i++)
+			{
+				String op = array[i];
+				if(op.equals(">"))
+				{
+					if(array3[i] < array3[i+1])
+					{
+						return;
+					}
+				}
+				else
+				{
+					if(array3[i] > array3[i+1])
+					{
+						return;
+					}
+				}
+			}
+			
+			if(array2[0][0] == -1)
 			{
 				for(int i = 0; i < total; i++)
 				{
@@ -52,6 +109,66 @@ public class inequel {
 			}
 			else
 			{
+				
+				
+				
+//				for(int i = 0; i < array.length; i++)
+//				{
+//					String op = array[i];
+//					if(op.equals(">"))
+//					{
+//						if(array3[total-1] > i)
+//						{
+//							boolean res = true; 
+//							for(int j = 0; j < array3.length; j++)
+//							{
+//								if(array3[j] == i)
+//								{
+//									res = false;
+//									break;
+//								}
+//							}
+//
+//							if(res == true)
+//							{
+//								array3[total] = i;
+//								check(array3, total + 1);
+//							}
+//						}
+//					}
+//					else
+//					{
+//						if(array3[total-1] < i)
+//						{
+//
+//							boolean res = true; 
+//							for(int j = 0; j < array3.length; j++)
+//							{
+//								if(array3[j] == i)
+//								{
+//									res = false;
+//									break;
+//								}
+//							}
+//
+//							if(res == true)
+//							{
+//								array3[total] = i;
+//								check(array3, total + 1);
+//							}
+//						}
+//					}
+//				}
+				
+//				for(int i = 0; i < array2[1].length; i++)
+//		        {
+//		        	System.out.print(array3[i]);
+//		        }
+//		        System.out.println();
+				
+				
+				
+				
 				for(int i = 0; i < total; i++)
 				{
 					cur += String.valueOf(array3[i]);
@@ -59,14 +176,14 @@ public class inequel {
 					max += String.valueOf(array2[1][i]);
 				}
 				
-				if(Integer.parseInt(cur) < Integer.parseInt(min))
+				if(Long.parseLong(cur) < Long.parseLong(min))
 				{
 					for(int i = 0; i < total; i++)
 					{
 						array2[0][i] = array3[i];
 					}
 				}
-				else if(Integer.parseInt(cur) > Integer.parseInt(max))
+				else if(Long.parseLong(cur) > Long.parseLong(max))
 				{
 					for(int i = 0; i < total; i++)
 					{
@@ -77,7 +194,63 @@ public class inequel {
 		}
 		else
 		{
+			for(int i = 0; i < 10; i++)
+			{
+//				if(total == 0) {
+					array3[total] = i;
+					check(array3, total + 1);
+//				}
+//				else
+//				{
+//					String op = array[total-1];
+//					if(op.equals(">"))
+//					{
+//						if(array3[total-1] > i)
+//						{
+//							boolean res = true; 
+//							for(int j = 0; j < array3.length; j++)
+//							{
+//								if(array3[j] == i)
+//								{
+//									res = false;
+//									break;
+//								}
+//							}
+//							
+//							if(res == true)
+//							{
+//								array3[total] = i;
+//								check(array3, total + 1);
+//							}
+//						}
+//					}
+//					else
+//					{
+//						if(array3[total-1] < i)
+//						{
+//							
+//							boolean res = true; 
+//							for(int j = 0; j < array3.length; j++)
+//							{
+//								if(array3[j] == i)
+//								{
+//									res = false;
+//									break;
+//								}
+//							}
+//							
+//							if(res == true)
+//							{
+//								array3[total] = i;
+//								check(array3, total + 1);
+//							}
+//						}
+//					}
+//				}
+			}
 			
+//			total++;
+//			check(array3, total);
 		}
 		
 //		for(int i = 0; i < 10; i++) {
